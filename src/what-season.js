@@ -12,20 +12,18 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function getSeason(date) {
-  console.debug(date)
-  if(typeof date != 'object'){
-    throw new Error("Invalid date!");
-  }
-  if (typeof date.getMonth() == 'undefined') {
+  if (date === undefined) {
     return 'Unable to determine the time of year!'
+ }
+
+
+  // if(isNaN(Date.parse(date))){
+  //   throw new Error("Invalid date!");
+  // }
+  if(!(date instanceof Date || !isNaN(date))){
+    throw new Error("Invalid date!")
   }
-  if(Date.parse() === null){
-    console.debug('QQQQQQQq')
-    throw new Error("Invalid date!");
-  }
-  if(date.getFullYear() < 1970){
-    date.setFullYear(1980)
-  }
+
 
 if (date.getMonth() === 0 || date.getMonth() === 1 || date.getMonth() === 11){
     return 'winter';
