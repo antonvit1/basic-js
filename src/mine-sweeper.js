@@ -24,10 +24,13 @@ const { NotImplementedError } = require('../extensions/index.js');
  * ]
  */
 function minesweeper(matrix) {
-console.debug()
+console.debug(matrix)
+let newArr = []
 for(let i = 0; i < matrix.length; i++){
   for(let a = 0; a < matrix[i].length; a++){
-if(mas[i][a]){}
+    if(matrix[i][a] === true){
+      newArr.push(1)
+    }
   }
 }
 }
