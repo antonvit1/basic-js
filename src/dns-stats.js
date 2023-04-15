@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
 /**
  * Given an array of domains, return the object with the appearances of the DNS.
@@ -25,56 +25,44 @@ const { NotImplementedError } = require('../extensions/index.js');
 function getDNSStats(domains) {
   let obj = {};
   let count = 0;
-let arr = Array.from(new Set(domains.map((el) => {
-  return el.split('.').map((val,index, arr) => {
-    if(index === 0){
-      return el;
-    }
-    else if(index === arr.length - 1){
-      return val;
-    }else{
+  let arr = Array.from(
+    new Set(
+      domains
+        .map((el) => {
+          return el.split(".").map((val, index, arr) => {
+            if (index === 0) {
+              return el;
+            } else if (index === arr.length - 1) {
+              return val;
+            } else {
+              return val + "." + arr[index + 1];
+            }
+          });
+        })
+        .flat()
+    )
+  );
 
-      return val + '.' + arr[index+1]
-    }
-
-  })
-
-}).flat()))
-
-console.debug('111111111',domains)
-console.debug('222222222',arr)
-
-if(domains.length === 0){
-  return obj
-}
-let k = ''
-for(let i = 0; i < arr.length; i++){
-  domains.forEach((url) => {
-    if(url.includes(arr[i])){
-      k = '.' + arr[i].split('.').reverse().join('.')
-      if(obj.hasOwnProperty(k)){
-
-        obj[k] += 1
-      }else{
-
-      obj[k] = 1
+  if (domains.length === 0) {
+    return obj;
+  }
+  let k = "";
+  for (let i = 0; i < arr.length; i++) {
+    domains.forEach((url) => {
+      if (url.includes(arr[i])) {
+        k = "." + arr[i].split(".").reverse().join(".");
+        if (obj.hasOwnProperty(k)) {
+          obj[k] += 1;
+        } else {
+          obj[k] = 1;
+        }
       }
-    }
-    // if(!url.includes(arr[i]) || arr.length === -1){
-    //   arr[i] ='.' + arr[i].split('.').reverse().join('.');
-    //   obj[arr[i]];
-    // }
-
-  })
-
-}
-  console.debug(obj)
+    });
+  }
+  console.debug(obj);
   return obj;
-
 }
-
-
 
 module.exports = {
-  getDNSStats
+  getDNSStats,
 };
