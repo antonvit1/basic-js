@@ -18,7 +18,6 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 function dateSample(sampleActivity) {
-
   let activity = Number(sampleActivity);
   let yearOld;
 
