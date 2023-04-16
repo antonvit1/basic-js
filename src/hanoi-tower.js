@@ -15,7 +15,13 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function calculateHanoi(diskNumber, turnsSpeed) {
- console.debug(diskNumber, turnsSpeed)
+
+let countNumber = Math.pow(2, diskNumber) - 1
+ let time = Math.floor((countNumber * 3600)/turnsSpeed);
+
+let a = { turns: countNumber,
+seconds: time}
+return a;
 }
 
 module.exports = {
