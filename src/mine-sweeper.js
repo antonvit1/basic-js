@@ -29,7 +29,7 @@ function minesweeper(matrix) {
   for (let i = 0; i < matrix.length; i++) {
 
     let d = matrix[i].map((val, a, arr) => {
-      if (val === true) {
+      if (val) {
         return 1;
       } else {
         let count = 0
