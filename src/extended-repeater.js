@@ -16,17 +16,17 @@ const { NotImplementedError } = require("../extensions/index.js");
  *
  */
 function repeater(str, options) {
-  let result = "";
+  let result = '';
   let addArray = [];
   let array = [];
 
   addition = String(options.addition);
   str = String(str);
 
-  let separator = options.separator ? options.separator : "+";
+  let separator = options.separator ? options.separator : '+';
   let additionSeparator = options.additionSeparator
     ? options.additionSeparator
-    : "|";
+    : '|';
   let repeatTimes = options.repeatTimes ? options.repeatTimes : 1;
   let additionRepeatTimes = options.additionRepeatTimes
     ? options.additionRepeatTimes
