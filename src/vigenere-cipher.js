@@ -20,10 +20,15 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 class VigenereCipheringMachine {
+
   encrypt(mesage, keyOne) {
+console.debug(mesage, keyOne)
+
 
   }
+
   decrypt(encryptMessage, keyTwo) {
+console.debug(encryptMessage, keyTwo)
 
   }
 }

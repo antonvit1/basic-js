@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
 /**
  * Given an array with heights, sort them except if the value is -1.
@@ -12,43 +12,28 @@ const { NotImplementedError } = require('../extensions/index.js');
  * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
  */
 function sortByHeight(arr) {
-  console.debug(arr)
-  let arr2 = []
+  let secondArr = arr;
+  let index = 0;
 
-//   arr.forEach((val, i, mas) => {
-//     if(mas[i] === -1 && mas[i+1] !== -1 ){
-//     console.debug(mas[i], 'one')
-//     arr2.push(val)
-//   }else if(mas[i] !== -1 && mas[i + 1] === -1){
-//     console.debug(mas[i], 'two')
-//     arr2.push(val)
-//   }else if( mas[i] === -1 && mas[i + 1] === -1){
-//     console.debug(mas[i], 'three')
-//     arr2.push(val)
-//   }else if (mas[i] !== -1 && mas[i + 1] !== -1 && (mas[i] - mas[i + 1] > 0)){
-//     console.debug(mas[i], 'four')
-//     arr2.push(mas[i])
-//   }else if (mas[i] !== -1 && mas[i + 1] !== -1 && (mas[i] - mas[i + 1] < 0)){
-//     console.debug(mas[i], 'four')
-//     arr2.push(mas[i + 1])
-//   }
-// });
-// return arr2
- arr.sort(function comNumb(a, b) {
-    if(a === -1 && b !== -1 ){
-      return b;
-    }else if(a !== -1 && b === -1){
-      return a - b;
-    }else if( a === -1 && b === -1){
-      return a;
-    }else{
-    return a - b;
+  secondArr = secondArr.filter((value) => {
+    if (value != -1) {
+      return value;
     }
-  })
-  console.debug(arr)
-  return arr
+  });
+
+  secondArr = secondArr.sort((a, b) => {
+    return a - b;
+  });
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] != -1) {
+      arr[i] = secondArr[index];
+      index++;
+    }
+  }
+  return arr;
 }
 
 module.exports = {
-  sortByHeight
+  sortByHeight,
 };
