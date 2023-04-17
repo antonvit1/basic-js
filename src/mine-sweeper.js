@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
 /**
  * In the popular Minesweeper game you have a board with some mines and those cells
@@ -24,17 +24,49 @@ const { NotImplementedError } = require('../extensions/index.js');
  * ]
  */
 function minesweeper(matrix) {
-console.debug(matrix)
-let newArr = []
-for(let i = 0; i < matrix.length; i++){
-  for(let a = 0; a < matrix[i].length; a++){
-    if(matrix[i][a] === true){
-      newArr.push(1)
+  console.debug(matrix);
+  let newArr = [];
+  for (let i = 0; i < matrix.length; i++) {
+
+    let d = matrix[i].map((val, a, arr) => {
+      if (val === true) {
+        return 1;
+      } else {
+        let count = 0
+        if(matrix[i][a + 1] === true) {
+          count++
+        }
+        if(matrix[i][a - 1] === true) {
+          count++
+        }
+        if(matrix[i + 1] && matrix[i + 1][a + 1] === true) {
+          count++
+        }
+        if(matrix[i + 1] && matrix[i + 1][a - 1] === true){
+          count++
+        }
+        if(matrix[i + 1] && matrix[i + 1][a]){
+          count++
+        }
+        if(matrix[i - 1] && matrix[i - 1][a - 1]){
+          count++
+        }
+        if(matrix[i - 1] && matrix[i - 1][a + 1]){
+          count++
+        }
+        if(matrix[i - 1] && matrix[i - 1][a]){
+          count++
+        }
+
+        return count;
+      }
+    })
+    newArr.push(d)
     }
-  }
-}
+
+return newArr
 }
 
 module.exports = {
-  minesweeper
+  minesweeper,
 };
