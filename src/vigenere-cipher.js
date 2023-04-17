@@ -19,7 +19,7 @@ const { NotImplementedError } = require("../extensions/index.js");
  * reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => '!NWAD TA KCATTA'
  *
  */
-const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 class VigenereCipheringMachine {
   constructor(type) {
     this.type = type ? "direct" : "reverse";
@@ -38,7 +38,7 @@ class VigenereCipheringMachine {
             keyOne[j % keyOne.length].charCodeAt() -
             130) %
           26;
-        let passwLet = ALPHABET.charAt(passwNumb);
+        let passwLet = LETTERS.charAt(passwNumb);
         password += passwLet;
         j++;
       } else {
@@ -65,7 +65,7 @@ class VigenereCipheringMachine {
             keyTwo[j % keyTwo.length].charCodeAt() +
             104) %
           26;
-        let strLetter = ALPHABET.charAt(strNumb);
+        let strLetter = LETTERS.charAt(strNumb);
         str += strLetter;
         j++;
       } else {
